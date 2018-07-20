@@ -1,5 +1,5 @@
 {
-  "name": "react-help-queue-example",
+  "name": "videoGame",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/epicodus-lessons/react-help-queue-example.git"
+    "url": "git+"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/epicodus-lessons/react-help-queue-example/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/epicodus-lessons/react-help-queue-example#readme",
+  "homepage": "",
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
