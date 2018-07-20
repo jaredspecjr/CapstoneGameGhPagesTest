@@ -14,6 +14,11 @@ class App extends Component {
         <div className="controls">
           <p>controls will go here</p>
         </div>
+        <style jsx>{`
+          .stage {
+            text-align: center;
+          }
+      `}</style>
       </div>
 
     );
