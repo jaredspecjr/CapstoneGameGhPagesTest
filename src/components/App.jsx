@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Room1 from './Room1';
+import Room2 from './Room2';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
         <div className="stage">
           <Switch>
             <Route exact path="/" render={()=> <Room1/>} />
+            <Route exact path="/room2" render={()=><Room2/>} />
           </Switch>
         </div>
         <div className="controls">
