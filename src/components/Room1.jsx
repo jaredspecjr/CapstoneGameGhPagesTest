@@ -7,6 +7,12 @@ function Room1(){
       <div>
         <img src={room1}/>
       </div>
+      <style jsx>{`
+        img {
+          width: 100%;
+          height: 400px;
+        }
+    `}</style>
     </div>
   );
 }

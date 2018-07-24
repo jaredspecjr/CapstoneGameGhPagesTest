@@ -61,7 +61,8 @@ module.exports = {
             "react",
           ],
           plugins: [
-            "react-hot-loader/babel"
+            "react-hot-loader/babel",
+            "styled-jsx/babel"
           ]
         }
       }
@@ -74,7 +75,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'template.ejs',
       appMountId: 'react-app-root',
-      title: 'React Help Queue',
+      title: 'Video Game',
       filename: resolve(__dirname, "build", "index.html"),
     }),
   ]
