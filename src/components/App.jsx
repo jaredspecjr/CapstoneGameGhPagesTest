@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Room1 from './Room1';
 import Room2 from './Room2';
 import HealthBar from './HealthBar';
+import Controls from './Controls';
 import { Route, Switch } from 'react-router-dom';
 
 
@@ -16,6 +17,7 @@ class App extends Component {
     this.damagePlayer = this.damagePlayer.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.cleanExtension = this.cleanExtension.bind(this);
+    this.checkOptions = this.checkOptions.bind(this);
   }
 
   cleanExtension(routeExtension) {
@@ -32,9 +34,14 @@ class App extends Component {
     });
   }
 
+  checkOptions() {
+    if (this.state.currentRoute === ""){
+      alert("this worked")
+    };
+  }
+
   damagePlayer() {
     let newHealthLevel = this.state.healthLevel - this.state.hurt;
-    console.log(location);
     this.setState({
       healthLevel: newHealthLevel
     });
@@ -57,7 +64,8 @@ class App extends Component {
         <div className="controls">
           <button onClick={this.damagePlayer}>test health</button>
           <button onClick={this.handleOnClick}>test cleaned extension</button>
-          <p>controls will go here</p>
+          <button onClick={this.checkOptions}>test equal to</button>
+          <Controls currentRouterPath={this.state.currentRoute}/>
         </div>
         <style jsx>{`
           .App {
@@ -81,7 +89,7 @@ class App extends Component {
           .healthBar {
             width: 600px;
             height: 50px;
-            background-color: white;
+            background-color: silver;
             border: 5px solid black;
             align-self: center;
           }
