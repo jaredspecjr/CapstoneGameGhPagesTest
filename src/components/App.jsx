@@ -4,6 +4,9 @@ import Room2 from './Room2';
 import HealthBar from './HealthBar';
 import Controls from './Controls';
 import { Route, Switch } from 'react-router-dom';
+import { browserHistory } from 'history';
+
+//Your initialization
 
 
 class App extends Component {
@@ -20,6 +23,13 @@ class App extends Component {
     this.checkOptions = this.checkOptions.bind(this);
   }
 
+  componentDidMount() {
+    console.log(browserHistory);
+    // browserHistory.listen( location =>  {
+    //  console.log(location);
+    // });
+  }
+
   cleanExtension(routeExtension) {
     let cleanedExtension = routeExtension.replace("#/", "");
     return cleanedExtension;
@@ -33,6 +43,8 @@ class App extends Component {
       currentRoute: cleanedExtension
     });
   }
+
+
 
   checkOptions() {
     if (this.state.currentRoute === ""){
@@ -48,6 +60,7 @@ class App extends Component {
   }
 
 
+
   render() {
     return (
 
@@ -57,7 +70,7 @@ class App extends Component {
         </div>
         <div className="stage">
           <Switch>
-            <Route exact path="/" render={()=> <Room1/>} />
+            <Route exact path="/" render={()=><Room1/>} />
             <Route path="/room2" render={()=><Room2/>} />
           </Switch>
         </div>
@@ -65,7 +78,7 @@ class App extends Component {
           <button onClick={this.damagePlayer}>test health</button>
           <button onClick={this.handleOnClick}>test cleaned extension</button>
           <button onClick={this.checkOptions}>test equal to</button>
-          <Controls currentRouterPath={this.state.currentRoute}/>
+          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick}/>
         </div>
         <style jsx>{`
           .App {
