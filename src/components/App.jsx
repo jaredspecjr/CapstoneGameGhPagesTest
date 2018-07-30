@@ -23,11 +23,9 @@ class App extends Component {
     this.checkOptions = this.checkOptions.bind(this);
   }
 
-  componentDidMount() {
-    console.log(browserHistory);
-    // browserHistory.listen( location =>  {
-    //  console.log(location);
-    // });
+  componentWillMount() {
+    this.handleOnClick();
+
   }
 
   cleanExtension(routeExtension) {
