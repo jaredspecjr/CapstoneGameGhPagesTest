@@ -8,7 +8,6 @@ import { browserHistory } from 'history';
 
 //Your initialization
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +24,6 @@ class App extends Component {
 
   componentWillMount() {
     this.handleOnClick();
-
   }
 
   cleanExtension(routeExtension) {

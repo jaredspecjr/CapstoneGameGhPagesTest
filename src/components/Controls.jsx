@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Controls(props) {
   if(props.currentRouterPath === "") {
     return(
-      <div>
+      <div onClick={props.updateRoute}>
         <Link to="room2">Go to room 2</Link>
       </div>
     );
