@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Room1 from './Room1';
 import Room2 from './Room2';
+import Room3 from './Room3';
 import HealthBar from './HealthBar';
 import Controls from './Controls';
 import { Route, Switch } from 'react-router-dom';
@@ -68,6 +69,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={()=><Room1/>} />
             <Route path="/room2" render={()=><Room2/>} />
+            <Route path="/room3" render={()=><Room3/>} />
           </Switch>
         </div>
         <div className="controls">
