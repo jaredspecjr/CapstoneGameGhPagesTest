@@ -1,24 +1,24 @@
 import React from 'react';
-import room4 from '../assets/images/room4.jpg';
-import enemy from '../assets/images/enemy.jpg';
+import PropTypes from 'prop-types';
+import Enemy from './Enemy';
 
-
-function Room4() {
-  if (enemyIsDefeted) {
+// let enemyIsDefeated = false;
+function Room4(props) {
+  if (props.enemyIsDefeated === true) {
 
     return (
-      <div>
-        <img src={room2}/>
+      <div className="container">
+        <p>room 4</p>
         <style jsx>{`
-            img {
-              width: 100%;
+            .container {
+              color: white;
               height: 400px;
             }
             `}</style>
         </div>
       );
     } else {
-      return <Enemy />
+      return <Enemy enemyHealth={props.enemyHealth}/>
     }
   }
 

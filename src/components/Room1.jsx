@@ -5,12 +5,12 @@ import room1 from '../assets/images/room1.jpg';
 function Room1(){
   return (
     <div>
-      <div>
-        <img src={room1}/>
+      <div className="container">
+        <p>You find yourself in a room with 3 doors. Which do you take?</p>
       </div>
       <style jsx>{`
-        img {
-          width: 100%;
+        .container {
+          color: white;
           height: 400px;
         }
     `}</style>
