@@ -32,6 +32,7 @@ class App extends Component {
     this.enemyDefeated = this.enemyDefeated.bind(this);
     this.isEnemyDefeated = this.isEnemyDefeated.bind(this);
     this.didPlayerAttack = this.didPlayerAttack.bind(this);
+    this.didEnemyAttack = this.didEnemyAttack.bind(this);
   }
   componentWillMount() {
     this.handleOnClick();
@@ -88,7 +89,8 @@ class App extends Component {
   }
 
   damagePlayer() {
-    let newAttackDisabled = false;
+    let newPlayerAttacked = false;
+    let newEnemyAttacked = true;
     if(this.state.enemyHealth < 1){
       console.log("I died");
     } else {
@@ -98,7 +100,14 @@ class App extends Component {
       });
     }
     this.setState({
-      attackDisabled: newAttackDisabled
+      playerAttacked: newPlayerAttacked
+    });
+    this.setState({
+      enemyAttacked: newEnemyAttacked
+    });
+    let playerHealthDif = this.state.healthLevel - newHealthLevel;
+    this.setState({
+      playerHurt: playerHealthDif
     });
   }
 
@@ -112,12 +121,26 @@ class App extends Component {
       attackDisabled: newAttackDisabled
     });
     this.didPlayerAttack();
+    let enemyHealthDif = this.state.enemyHealth - newEnemyHealth;
+    this.setState({
+      enemyHurt: enemyHealthDif
+    });
   }
 
   didPlayerAttack() {
     let newPlayerAttacked = true;
     this.setState({
       playerAttacked: newPlayerAttacked
+    });
+  }
+  didEnemyAttack() {
+    let newEnemyAttacked = false;
+    let newAttackDisabled = false;
+    this.setState({
+      enemyAttacked: newEnemyAttacked
+    });
+    this.setState({
+      attackDisabled: newAttackDisabled
     });
   }
 
@@ -135,7 +158,11 @@ class App extends Component {
             <Route path="/room3" render={()=><Room3/>} />
             <Route path="/room4" render={()=><Room4 enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
             enemyAttacked={this.state.enemyAttacked}
-            playerAttacked={this.state.playerAttacked} />} />
+            playerAttacked={this.state.playerAttacked}
+            damagePlayer={this.damagePlayer}
+            didEnemyAttack={this.didEnemyAttack}
+            enemyHurt={this.state.enemyHurt}
+            playerHurt={this.state.playerHurt} />} />
           </Switch>
         </div>
         <div className="controls">

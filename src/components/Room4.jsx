@@ -18,7 +18,11 @@ function Room4(props) {
         </div>
       );
     } else {
-      return <Enemy playerAttacked={props.playerAttacked}  enemyAttacked={props.enemyAttacked} enemyHealth={props.enemyHealth}/>
+      return <Enemy playerAttacked={props.playerAttacked}  enemyAttacked={props.enemyAttacked} enemyHealth={props.enemyHealth}
+      damagePlayer={props.damagePlayer}
+      didEnemyAttack={props.didEnemyAttack}
+      enemyHurt={props.enemyHurt}
+      playerHurt={props.playerHurt}/>
     }
   }
 

@@ -2,12 +2,12 @@ import React from 'react';
 
 
 
-function PlayerTxt(){
+function PlayerTxt(props){
   return (
     <div>
       <div className="container">
-        <p>You did 10 damage!</p>
-        <button>Next</button>
+        <p>You did {props.playerHurt} damage!</p>
+        <button onClick={props.damagePlayer}>Next</button>
       </div>
       <style jsx>{`
         .container {

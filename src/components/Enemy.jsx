@@ -10,9 +10,9 @@ function Enemy(props) {
   };
   let currentContent = null;
   if(props.enemyAttacked === true){
-    currentContent = <EnemyTxt/>
+    currentContent = <EnemyTxt enemyHurt={props.enemyHurt} didEnemyAttack={props.didEnemyAttack}/>
   } else if(props.playerAttacked === true){
-    currentContent = <PlayerTxt/>
+    currentContent = <PlayerTxt playerHurt={props.playerHurt} damagePlayer={props.damagePlayer}/>
   } else {
     console.log(props.playerAttacked);
     currentContent = "lol";

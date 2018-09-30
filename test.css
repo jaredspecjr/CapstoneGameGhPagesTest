@@ -4,3 +4,7 @@
 }
 
 /*this.timer = setTimeout(() => this.damagePlayer(), 1000);*/
+
+/*this.setState({
+  attackDisabled: newAttackDisabled
+});*/

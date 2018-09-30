@@ -2,12 +2,12 @@ import React from 'react';
 
 
 
-function EnemyTxt(){
+function EnemyTxt(props){
   return (
     <div>
       <div className="container">
-        <p>Shady knight did 10 damage!</p>
-        <button>Next</button>
+        <p>Shady knight did {props.enemyHurt} damage!</p>
+        <button onClick={props.didEnemyAttack}>Next</button>
       </div>
       <style jsx>{`
         .container {
