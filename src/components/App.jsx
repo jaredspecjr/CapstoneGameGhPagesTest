@@ -15,26 +15,28 @@ class App extends Component {
     super(props);
     this.state = {
       healthLevel: 100,
-      hurt: 1,
+      playerHurt: 0,
+      enemyHurt: 0,
       currentRoute: "",
       enemyHealth: 60,
-      enemyIsDefeated: false
+      enemyIsDefeated: false,
+      attackDisabled: false
     };
     this.damagePlayer = this.damagePlayer.bind(this);
     this.damageEnemy = this.damageEnemy.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.cleanExtension = this.cleanExtension.bind(this);
-    this.checkOptions = this.checkOptions.bind(this);
+    this.checkClear = this.checkClear.bind(this);
     this.enemyDefeated = this.enemyDefeated.bind(this);
     this.isEnemyDefeated = this.isEnemyDefeated.bind(this);
   }
 
   componentWillMount() {
     this.handleOnClick();
-    // this.timer = setInterval(() => this.isEnemyDefeated(), 1000);
   }
   componentDidMount(){
-    this.timer = setInterval(() => this.isEnemyDefeated(), 1000);
+    let checkIfDeadTimer = setInterval(() => this.isEnemyDefeated(), 1000);
+    return checkIfDeadTimer;
   }
   componentWillUnmount(){
 
@@ -55,15 +57,16 @@ class App extends Component {
   }
 
 
-
   checkOptions() {
 
+  }
+  checkClear() {
+    clearInterval(this.checkIfDeadTimer);
   }
 
   isEnemyDefeated() {
     if(this.state.enemyHealth < 1){
       this.enemyDefeated();
-      clearInterval(this.timer);
       console.log("dis enemy DED");
     } else {
       console.log("this enemy is still alive!");
@@ -83,18 +86,32 @@ class App extends Component {
   }
 
   damagePlayer() {
-    let newHealthLevel = this.state.healthLevel - this.state.hurt;
+    let newAttackDisabled = false;
+    if(this.state.enemyHealth < 1){
+      console.log("I died");
+    } else {
+      let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 20) + 1);
+      this.setState({
+        healthLevel: newHealthLevel
+      });
+    }
     this.setState({
-      healthLevel: newHealthLevel
+      attackDisabled: newAttackDisabled
     });
   }
 
   damageEnemy() {
-    let newEnemyHealth = this.state.enemyHealth - this.state.hurt;
+    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 30) + 5);
+    let newAttackDisabled = true;
     this.setState({
       enemyHealth: newEnemyHealth
     });
+    this.setState({
+      attackDisabled: newAttackDisabled
+    });
+    this.timer = setTimeout(() => this.damagePlayer(), 1000);
   }
+
 
 
   render() {
@@ -115,8 +132,9 @@ class App extends Component {
         <div className="controls">
           <button onClick={this.damageEnemy}>test health</button>
           <button onClick={this.handleOnClick}>test cleaned extension</button>
-          <button onClick={this.checkOptions}>test equal to</button>
-          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}/>
+          <button onClick={this.checkClear}>test cleard interval</button>
+          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
+          attackDisabled={this.state.attackDisabled}/>
         </div>
         <style jsx>{`
           .App {
