@@ -30,7 +30,7 @@ function Controls(props) {
   } else if (props.currentRouterPath === "room4" && props.enemyIsDefeated === false ){
     return (
       <div>
-        <p>attack controls</p>
+        <button onClick={props.damageEnemy}>Attack</button>
       </div>
     );
   } else if (props.currentRouterPath === "room4"){

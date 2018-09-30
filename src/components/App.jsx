@@ -6,7 +6,7 @@ import Room4 from './Room4';
 import HealthBar from './HealthBar';
 import Controls from './Controls';
 import { Route, Switch } from 'react-router-dom';
-import { browserHistory } from 'history';
+// import { browserHistory } from 'history';
 
 //Your initialization
 
@@ -31,7 +31,13 @@ class App extends Component {
 
   componentWillMount() {
     this.handleOnClick();
-    this.isEnemyDefeated();
+    // this.timer = setInterval(() => this.isEnemyDefeated(), 1000);
+  }
+  componentDidMount(){
+    this.timer = setInterval(() => this.isEnemyDefeated(), 1000);
+  }
+  componentWillUnmount(){
+
   }
 
   cleanExtension(routeExtension) {
@@ -57,6 +63,10 @@ class App extends Component {
   isEnemyDefeated() {
     if(this.state.enemyHealth < 1){
       this.enemyDefeated();
+      clearInterval(this.timer);
+      console.log("dis enemy DED");
+    } else {
+      console.log("this enemy is still alive!");
     }
   }
   enemyDefeated() {
@@ -84,7 +94,6 @@ class App extends Component {
     this.setState({
       enemyHealth: newEnemyHealth
     });
-    this.isEnemyDefeated();
   }
 
 
@@ -107,7 +116,7 @@ class App extends Component {
           <button onClick={this.damageEnemy}>test health</button>
           <button onClick={this.handleOnClick}>test cleaned extension</button>
           <button onClick={this.checkOptions}>test equal to</button>
-          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick} enemyIsDefeated={this.state.enemyIsDefeated}/>
+          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}/>
         </div>
         <style jsx>{`
           .App {
