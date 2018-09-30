@@ -30,7 +30,12 @@ function Controls(props) {
   } else if (props.currentRouterPath === "room4" && props.enemyIsDefeated === false ){
     return (
       <div>
-        <button disabled={props.attackDisabled} className="attackButton" onClick={props.damageEnemy}>Attack</button>
+        <div>
+          <button disabled={props.attackDisabled} className="attackButton" onClick={props.damageEnemy}>Attack</button>
+        </div>
+        <div>
+          <button disabled={props.attackDisabled} onClick={props.usePotion} >Use Potion: {props.potions}</button>
+        </div>
       </div>
     );
   } else if (props.currentRouterPath === "room4"){

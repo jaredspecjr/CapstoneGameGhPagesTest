@@ -22,7 +22,10 @@ class App extends Component {
       enemyIsDefeated: false,
       attackDisabled: false,
       enemyAttacked: false,
-      playerAttacked: false
+      playerAttacked: false,
+      potions: 0,
+      potion1: true,
+      potion2: true
     };
     this.damagePlayer = this.damagePlayer.bind(this);
     this.damageEnemy = this.damageEnemy.bind(this);
@@ -33,6 +36,7 @@ class App extends Component {
     this.isEnemyDefeated = this.isEnemyDefeated.bind(this);
     this.didPlayerAttack = this.didPlayerAttack.bind(this);
     this.didEnemyAttack = this.didEnemyAttack.bind(this);
+    this.usePotion = this.usePotion.bind(this);
   }
   componentWillMount() {
     this.handleOnClick();
@@ -64,7 +68,7 @@ class App extends Component {
 
   }
   checkClear() {
-
+    this.usePotion();
   }
 
   isEnemyDefeated() {
@@ -143,6 +147,42 @@ class App extends Component {
       attackDisabled: newAttackDisabled
     });
   }
+  usePotion() {
+    if(this.state.potions > 0){
+      if(this.state.healthLevel < 100){
+        let newPotions = this.state.potions -1;
+        this.setState({
+          potions: newPotions
+        });
+        if(this.state.healthLevel <= 75){
+          let newHealthLevel = this.state.healthLevel + 25;
+          let newAttackDisabled = true;
+          this.setState({
+            healthLevel: newHealthLevel
+          });
+          this.setState({
+            attackDisabled: newAttackDisabled
+          });
+          this.setState({
+            potions: newPotions
+          });
+        } else {
+          let revisedHealthLevel = this.state.healthLevel = 100;
+          let newAttackDisabled = true;
+          this.setState({
+            healthLevel: revisedHealthLevel
+          });
+          this.setState({
+            attackDisabled: newAttackDisabled
+          });
+        }
+      } else {
+        console.log("you have max health...");
+      }
+    } else {
+      console.log("you have no potions!");
+    }
+  }
 
   render() {
     return (
@@ -170,7 +210,9 @@ class App extends Component {
           <button onClick={this.handleOnClick}>test cleaned extension</button>
           <button onClick={this.checkClear}>test cleard interval</button>
           <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
-          attackDisabled={this.state.attackDisabled}/>
+          attackDisabled={this.state.attackDisabled}
+          potions={this.state.potions}
+          usePotion={this.usePotion}/>
         </div>
         <style jsx>{`
           .App {
