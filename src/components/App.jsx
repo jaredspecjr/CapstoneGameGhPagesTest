@@ -98,16 +98,16 @@ class App extends Component {
       this.setState({
         healthLevel: newHealthLevel
       });
+      let playerHealthDif = this.state.healthLevel - newHealthLevel;
+      this.setState({
+        playerHurt: playerHealthDif
+      });
     }
     this.setState({
       playerAttacked: newPlayerAttacked
     });
     this.setState({
       enemyAttacked: newEnemyAttacked
-    });
-    let playerHealthDif = this.state.healthLevel - newHealthLevel;
-    this.setState({
-      playerHurt: playerHealthDif
     });
   }
 

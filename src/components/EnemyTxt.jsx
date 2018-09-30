@@ -6,7 +6,7 @@ function EnemyTxt(props){
   return (
     <div>
       <div className="container">
-        <p>Shady knight did {props.enemyHurt} damage!</p>
+        <p>Shady knight did {props.playerHurt} damage!</p>
         <button onClick={props.didEnemyAttack}>Next</button>
       </div>
       <style jsx>{`

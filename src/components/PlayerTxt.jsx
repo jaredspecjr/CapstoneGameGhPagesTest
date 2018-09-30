@@ -6,7 +6,7 @@ function PlayerTxt(props){
   return (
     <div>
       <div className="container">
-        <p>You did {props.playerHurt} damage!</p>
+        <p>You did {props.enemyHurt} damage!</p>
         <button onClick={props.damagePlayer}>Next</button>
       </div>
       <style jsx>{`
