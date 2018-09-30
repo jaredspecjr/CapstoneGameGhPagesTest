@@ -1,4 +1,6 @@
 /*This is a test file to help serve as a library to existing commands*/
 .test {
-
+  border-style:
 }
+
+/*this.timer = setTimeout(() => this.damagePlayer(), 1000);*/

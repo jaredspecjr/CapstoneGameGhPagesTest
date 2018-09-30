@@ -20,7 +20,9 @@ class App extends Component {
       currentRoute: "",
       enemyHealth: 60,
       enemyIsDefeated: false,
-      attackDisabled: false
+      attackDisabled: false,
+      enemyAttacked: false,
+      playerAttacked: false
     };
     this.damagePlayer = this.damagePlayer.bind(this);
     this.damageEnemy = this.damageEnemy.bind(this);
@@ -29,8 +31,8 @@ class App extends Component {
     this.checkClear = this.checkClear.bind(this);
     this.enemyDefeated = this.enemyDefeated.bind(this);
     this.isEnemyDefeated = this.isEnemyDefeated.bind(this);
+    this.didPlayerAttack = this.didPlayerAttack.bind(this);
   }
-
   componentWillMount() {
     this.handleOnClick();
   }
@@ -61,7 +63,7 @@ class App extends Component {
 
   }
   checkClear() {
-    clearInterval(this.checkIfDeadTimer);
+
   }
 
   isEnemyDefeated() {
@@ -109,10 +111,15 @@ class App extends Component {
     this.setState({
       attackDisabled: newAttackDisabled
     });
-    this.timer = setTimeout(() => this.damagePlayer(), 1000);
+    this.didPlayerAttack();
   }
 
-
+  didPlayerAttack() {
+    let newPlayerAttacked = true;
+    this.setState({
+      playerAttacked: newPlayerAttacked
+    });
+  }
 
   render() {
     return (
@@ -126,7 +133,9 @@ class App extends Component {
             <Route exact path="/" render={()=><Room1/>} />
             <Route path="/room2" render={()=><Room2/>} />
             <Route path="/room3" render={()=><Room3/>} />
-            <Route path="/room4" render={()=><Room4 enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}/>} />
+            <Route path="/room4" render={()=><Room4 enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
+            enemyAttacked={this.state.enemyAttacked}
+            playerAttacked={this.state.playerAttacked} />} />
           </Switch>
         </div>
         <div className="controls">

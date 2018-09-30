@@ -18,7 +18,7 @@ function Room4(props) {
         </div>
       );
     } else {
-      return <Enemy enemyHealth={props.enemyHealth}/>
+      return <Enemy playerAttacked={props.playerAttacked}  enemyAttacked={props.enemyAttacked} enemyHealth={props.enemyHealth}/>
     }
   }
 
