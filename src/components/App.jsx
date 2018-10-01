@@ -121,10 +121,16 @@ class App extends Component {
       this.isEnemyDefeated();
     } else {
       let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 20) + 1);
-      let playerDead =
-      this.setState({
-        healthLevel: newHealthLevel
-      });
+      let playerDead = 0;
+      if(newHealthLevel <= 0){
+        this.setState({
+          healthLevel: playerDead
+        });
+      } else {
+        this.setState({
+          healthLevel: newHealthLevel
+        });
+      }
       let playerHealthDif = this.state.healthLevel - newHealthLevel;
       this.setState({
         playerHurt: playerHealthDif
