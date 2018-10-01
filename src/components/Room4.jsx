@@ -24,7 +24,8 @@ function Room4(props) {
       enemyHurt={props.enemyHurt}
       playerHurt={props.playerHurt}
       potionUsed={props.potionUsed}
-      amountHealed={props.amountHealed}/>
+      amountHealed={props.amountHealed}
+      isEnemyDefeated={props.isEnemyDefeated}/>
     }
   }
 

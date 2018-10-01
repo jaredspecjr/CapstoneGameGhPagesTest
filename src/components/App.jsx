@@ -6,7 +6,7 @@ import Room4 from './Room4';
 import HealthBar from './HealthBar';
 import Controls from './Controls';
 import { Route, Switch } from 'react-router-dom';
-// import { browserHistory } from 'history';
+// import { browserHistory } from 'react-router';
 
 //Your initialization
 
@@ -25,7 +25,7 @@ class App extends Component {
       enemyAttacked: false,
       playerAttacked: false,
       potionUsed: false,
-      potions: 0,
+      potions: 1,
       potion1: true,
       potion2: true
     };
@@ -36,21 +36,24 @@ class App extends Component {
     this.checkClear = this.checkClear.bind(this);
     this.enemyDefeated = this.enemyDefeated.bind(this);
     this.isEnemyDefeated = this.isEnemyDefeated.bind(this);
+    this.isPlayerDefeated = this.isPlayerDefeated.bind(this);
     this.didPlayerAttack = this.didPlayerAttack.bind(this);
     this.didEnemyAttack = this.didEnemyAttack.bind(this);
     this.usePotion = this.usePotion.bind(this);
     this.wasPotionUsed = this.wasPotionUsed.bind(this);
+    this.checkDefeated = this.checkDefeated.bind(this);
+    this.enemyReset = this.enemyReset.bind(this);
   }
   componentWillMount() {
     this.handleOnClick();
   }
   componentDidMount(){
-    let checkIfDeadTimer = setInterval(() => this.isEnemyDefeated(), 1000);
-    return checkIfDeadTimer;
+
   }
   componentWillUnmount(){
 
   }
+
 
   cleanExtension(routeExtension) {
     let cleanedExtension = routeExtension.replace("#/", "");
@@ -66,12 +69,13 @@ class App extends Component {
     });
   }
 
-  checkOptions() {
+  checkClear() {
+    this.isPlayerDefeated();
 
   }
-
-  checkClear() {
-    this.usePotion();
+  checkDefeated(){
+    this.isEnemyDefeated();
+    this.isPlayerDefeated();
   }
 
   isEnemyDefeated() {
@@ -80,6 +84,14 @@ class App extends Component {
       console.log("dis enemy DED");
     } else {
       console.log("this enemy is still alive!");
+    }
+  }
+
+  isPlayerDefeated() {
+    if(this.state.healthLevel <= 0){
+      window.location.href = "http://localhost:8080/";
+    } else {
+      console.log("player is alive");
     }
   }
 
@@ -92,8 +104,12 @@ class App extends Component {
 
   enemyReset() {
     let newEnemyIsDefeated = false;
+    let newEnemyHealth = 60;
     this.setState({
       enemyIsDefeated: newEnemyIsDefeated
+    });
+    this.setState({
+      enemyHealth: newEnemyHealth
     });
   }
 
@@ -102,9 +118,10 @@ class App extends Component {
     let newEnemyAttacked = true;
     let newPotionUsed = false;
     if(this.state.enemyHealth < 1){
-      console.log("I died");
+      this.isEnemyDefeated();
     } else {
       let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 20) + 1);
+      let playerDead =
       this.setState({
         healthLevel: newHealthLevel
       });
@@ -126,10 +143,17 @@ class App extends Component {
 
   damageEnemy() {
     let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 30) + 5);
+    let enemyDead = 0;
     let newAttackDisabled = true;
-    this.setState({
-      enemyHealth: newEnemyHealth
-    });
+    if(newEnemyHealth <= 0){
+      this.setState({
+        enemyHealth: enemyDead
+      });
+    } else {
+      this.setState({
+        enemyHealth: newEnemyHealth
+      });
+    }
     this.setState({
       attackDisabled: newAttackDisabled
     });
@@ -148,6 +172,7 @@ class App extends Component {
   }
 
   didEnemyAttack() {
+    this.isPlayerDefeated();
     let newEnemyAttacked = false;
     let newAttackDisabled = false;
     this.setState({
@@ -225,13 +250,14 @@ class App extends Component {
             didEnemyAttack={this.didEnemyAttack}
             enemyHurt={this.state.enemyHurt}
             playerHurt={this.state.playerHurt}
-            amountHealed={this.state.amountHealed} />} />
+            amountHealed={this.state.amountHealed}
+            isEnemyDefeated={this.isEnemyDefeated} />} />
           </Switch>
         </div>
         <div className="controls">
-          <button onClick={this.damageEnemy}>test health</button>
+          <button onClick={this.damagePlayer}>test health</button>
           <button onClick={this.handleOnClick}>test cleaned extension</button>
-          <button onClick={this.checkClear}>test cleard interval</button>
+          <button onClick={this.enemyReset}>test enemyReset</button>
           <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
           attackDisabled={this.state.attackDisabled}
           potions={this.state.potions}

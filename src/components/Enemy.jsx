@@ -13,7 +13,8 @@ function Enemy(props) {
   if(props.enemyAttacked === true){
     currentContent = <EnemyTxt playerHurt={props.playerHurt} didEnemyAttack={props.didEnemyAttack}/>
   } else if(props.playerAttacked === true){
-    currentContent = <PlayerTxt enemyHurt={props.enemyHurt} damagePlayer={props.damagePlayer}/>
+    currentContent = <PlayerTxt enemyHurt={props.enemyHurt} damagePlayer={props.damagePlayer}
+    isEnemyDefeated={props.isEnemyDefeated}/>
   } else if(props.potionUsed === true){
     currentContent = <PotionTxt amountHealed={props.amountHealed}
     damagePlayer={props.damagePlayer}/>
