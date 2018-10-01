@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import enemy from '../assets/images/swordsman_t.png';
 import EnemyTxt from './EnemyTxt';
 import PlayerTxt from './PlayerTxt';
+import PotionTxt from './PotionTxt';
 
 function Enemy(props) {
   const ENEMYSTATUS = {
@@ -13,6 +14,9 @@ function Enemy(props) {
     currentContent = <EnemyTxt playerHurt={props.playerHurt} didEnemyAttack={props.didEnemyAttack}/>
   } else if(props.playerAttacked === true){
     currentContent = <PlayerTxt enemyHurt={props.enemyHurt} damagePlayer={props.damagePlayer}/>
+  } else if(props.potionUsed === true){
+    currentContent = <PotionTxt amountHealed={props.amountHealed}
+    damagePlayer={props.damagePlayer}/>
   } else {
     console.log(props.playerAttacked);
     currentContent = "lol";

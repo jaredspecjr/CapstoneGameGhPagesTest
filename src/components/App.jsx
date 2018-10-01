@@ -17,12 +17,14 @@ class App extends Component {
       healthLevel: 100,
       playerHurt: 0,
       enemyHurt: 0,
+      amountHealed:0,
       currentRoute: "",
       enemyHealth: 60,
       enemyIsDefeated: false,
       attackDisabled: false,
       enemyAttacked: false,
       playerAttacked: false,
+      potionUsed: false,
       potions: 0,
       potion1: true,
       potion2: true
@@ -37,6 +39,7 @@ class App extends Component {
     this.didPlayerAttack = this.didPlayerAttack.bind(this);
     this.didEnemyAttack = this.didEnemyAttack.bind(this);
     this.usePotion = this.usePotion.bind(this);
+    this.wasPotionUsed = this.wasPotionUsed.bind(this);
   }
   componentWillMount() {
     this.handleOnClick();
@@ -63,10 +66,10 @@ class App extends Component {
     });
   }
 
-
   checkOptions() {
 
   }
+
   checkClear() {
     this.usePotion();
   }
@@ -79,12 +82,14 @@ class App extends Component {
       console.log("this enemy is still alive!");
     }
   }
+
   enemyDefeated() {
     let newEnemyIsDefeated = true;
     this.setState({
       enemyIsDefeated: newEnemyIsDefeated
     });
   }
+
   enemyReset() {
     let newEnemyIsDefeated = false;
     this.setState({
@@ -95,6 +100,7 @@ class App extends Component {
   damagePlayer() {
     let newPlayerAttacked = false;
     let newEnemyAttacked = true;
+    let newPotionUsed = false;
     if(this.state.enemyHealth < 1){
       console.log("I died");
     } else {
@@ -112,6 +118,9 @@ class App extends Component {
     });
     this.setState({
       enemyAttacked: newEnemyAttacked
+    });
+    this.setState({
+      potionUsed: newPotionUsed
     });
   }
 
@@ -137,6 +146,7 @@ class App extends Component {
       playerAttacked: newPlayerAttacked
     });
   }
+
   didEnemyAttack() {
     let newEnemyAttacked = false;
     let newAttackDisabled = false;
@@ -147,33 +157,44 @@ class App extends Component {
       attackDisabled: newAttackDisabled
     });
   }
+
+  wasPotionUsed() {
+    let newPotionUsed = true;
+    this.setState({
+      potionUsed: newPotionUsed
+    });
+  }
+
   usePotion() {
     if(this.state.potions > 0){
       if(this.state.healthLevel < 100){
         let newPotions = this.state.potions -1;
+        this.wasPotionUsed();
         this.setState({
           potions: newPotions
         });
+        let newAttackDisabled = true;
+        this.setState({
+          attackDisabled: newAttackDisabled
+        });
         if(this.state.healthLevel <= 75){
           let newHealthLevel = this.state.healthLevel + 25;
-          let newAttackDisabled = true;
+          let potionDif = newHealthLevel - this.state.healthLevel;
+          this.setState({
+            amountHealed: potionDif
+          });
           this.setState({
             healthLevel: newHealthLevel
           });
-          this.setState({
-            attackDisabled: newAttackDisabled
-          });
-          this.setState({
-            potions: newPotions
-          });
         } else {
-          let revisedHealthLevel = this.state.healthLevel = 100;
-          let newAttackDisabled = true;
+          let currentHealthLevel = this.state.healthLevel;
+          let revisedHealthLevel = 100;
+          let potionDif = revisedHealthLevel - currentHealthLevel;
+          this.setState({
+            amountHealed: potionDif
+          });
           this.setState({
             healthLevel: revisedHealthLevel
-          });
-          this.setState({
-            attackDisabled: newAttackDisabled
           });
         }
       } else {
@@ -199,10 +220,12 @@ class App extends Component {
             <Route path="/room4" render={()=><Room4 enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
             enemyAttacked={this.state.enemyAttacked}
             playerAttacked={this.state.playerAttacked}
+            potionUsed={this.state.potionUsed}
             damagePlayer={this.damagePlayer}
             didEnemyAttack={this.didEnemyAttack}
             enemyHurt={this.state.enemyHurt}
-            playerHurt={this.state.playerHurt} />} />
+            playerHurt={this.state.playerHurt}
+            amountHealed={this.state.amountHealed} />} />
           </Switch>
         </div>
         <div className="controls">
