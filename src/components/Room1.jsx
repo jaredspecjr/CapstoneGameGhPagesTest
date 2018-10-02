@@ -6,7 +6,7 @@ function Room1(){
   return (
     <div>
       <div className="container">
-        <p>You find yourself in a room with 3 doors. Which do you take?</p>
+        <p>You find yourself in a room with 2 doors. Which do you take?</p>
       </div>
       <style jsx>{`
         .container {

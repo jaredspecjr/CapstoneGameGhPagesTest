@@ -33,11 +33,12 @@ class App extends Component {
       potionUsed: false,
       potions: 1,
       potion1: true,
-      potion2: true
+      potion2: true,
+      roomSearched: false
     };
     this.damagePlayer = this.damagePlayer.bind(this);
     this.damageEnemy = this.damageEnemy.bind(this);
-    this.handleOnClick = this.handleOnClick.bind(this);
+    this.updateRoute = this.updateRoute.bind(this);
     this.cleanExtension = this.cleanExtension.bind(this);
     this.checkClear = this.checkClear.bind(this);
     this.enemyDefeated = this.enemyDefeated.bind(this);
@@ -49,9 +50,12 @@ class App extends Component {
     this.wasPotionUsed = this.wasPotionUsed.bind(this);
     this.checkDefeated = this.checkDefeated.bind(this);
     this.enemyReset = this.enemyReset.bind(this);
+    this.pickUpPotion = this.pickUpPotion.bind(this);
+    this.searchClicked = this.searchClicked.bind(this);
+    this.noItemsFound = this.noItemsFound.bind(this);
   }
   componentWillMount() {
-    this.handleOnClick();
+    this.updateRoute();
   }
   componentDidMount(){
 
@@ -66,7 +70,8 @@ class App extends Component {
     return cleanedExtension;
   }
 
-  handleOnClick() {
+  updateRoute() {
+    this.enemyReset();
     const routeExtension = location.hash;
     const cleanedExtension = this.cleanExtension(routeExtension);
     console.log(cleanedExtension);
@@ -215,7 +220,7 @@ class App extends Component {
         this.setState({
           attackDisabled: newAttackDisabled
         });
-        let newHealthLevel = this.state.healthLevel + 25;
+        let newHealthLevel = this.state.healthLevel + Math.floor((Math.random() * 20) + 30);
         if(newHealthLevel >= 100){
           let currentHealthLevel = this.state.healthLevel;
           let revisedHealthLevel = 100;
@@ -243,6 +248,37 @@ class App extends Component {
     }
   }
 
+  pickUpPotion(){
+    let newPotions = this.state.potions + 1;
+    let newPotion1 = false;
+    let newRoomSeached = false;
+    this.setState({
+      potions: newPotions
+    });
+    this.setState({
+      potion1: newPotion1
+    });
+    this.setState({
+      roomSearched: newRoomSeached
+    });
+  }
+  // checks to see if potion is in room or not
+  checkPotion(){
+
+  }
+  searchClicked(){
+    let newRoomSeached = true;
+    this.setState({
+      roomSearched: newRoomSeached
+    });
+  }
+  noItemsFound(){
+    let newRoomSeached = false;
+    this.setState({
+      roomSearched: newRoomSeached
+    });
+  }
+
   render() {
     return (
 
@@ -266,7 +302,11 @@ class App extends Component {
               enemyHurt={this.state.enemyHurt}
               playerHurt={this.state.playerHurt}
               amountHealed={this.state.amountHealed}
-              isEnemyDefeated={this.isEnemyDefeated}/>}/>
+              isEnemyDefeated={this.isEnemyDefeated}
+              potion1={this.state.potion1}
+              roomSearched={this.state.roomSearched}
+              pickUpPotion={this.pickUpPotion}
+              noItemsFound={this.noItemsFound}/>}/>
             <Route path="/room5" render={()=><Room5/>}/>
             <Route path="/room6" render={()=><Room6/>}/>
             <Route path="/room7" render={()=><Room7
@@ -281,18 +321,30 @@ class App extends Component {
               amountHealed={this.state.amountHealed}
               isEnemyDefeated={this.isEnemyDefeated}/>}/>
             <Route path="/room8" render={()=><Room8/>}/>
-            <Route path="/room9" render={()=><Room9/>}/>
+            <Route path="/room9" render={()=><Room9
+              enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
+              enemyAttacked={this.state.enemyAttacked}
+              playerAttacked={this.state.playerAttacked}
+              potionUsed={this.state.potionUsed}
+              damagePlayer={this.damagePlayer}
+              didEnemyAttack={this.didEnemyAttack}
+              enemyHurt={this.state.enemyHurt}
+              playerHurt={this.state.playerHurt}
+              amountHealed={this.state.amountHealed}
+              isEnemyDefeated={this.isEnemyDefeated}/>}/>
             <Route path="/room10" render={()=><Room10/>}/>
           </Switch>
         </div>
         <div className="controls">
           <button onClick={this.damagePlayer}>test health</button>
-          <button onClick={this.handleOnClick}>test cleaned extension</button>
-          <button onClick={this.enemyReset}>test enemyReset</button>
-          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.handleOnClick} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
+          <button onClick={this.updateRoute}>test cleaned extension</button>
+          <button onClick={this.pickUpPotion}>test enemyReset</button>
+          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.updateRoute} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
           attackDisabled={this.state.attackDisabled}
           potions={this.state.potions}
-          usePotion={this.usePotion}/>
+          usePotion={this.usePotion}
+          pickUpPotion={this.pickUpPotion}
+          searchClicked={this.searchClicked}/>
         </div>
         <style jsx>{`
           .App {

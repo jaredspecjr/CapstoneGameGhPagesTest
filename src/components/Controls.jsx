@@ -42,8 +42,13 @@ function Controls(props) {
     );
   } else if (props.currentRouterPath === "room4") {
     return (
-      <div onClick={props.updateRoute}>
-        <Link to="room6">go to room 6</Link>
+      <div>
+        <div>
+          <button onClick={props.searchClicked}>Search Desk</button>
+        </div>
+        <div onClick={props.updateRoute}>
+          <Link to="room6">go to room 6</Link>
+        </div>
       </div>
     );
   } else if (props.currentRouterPath === "room5") {
@@ -89,6 +94,17 @@ function Controls(props) {
         <Link to="room10">go to boss room from 8</Link>
       </div>
     );
+  } else if (props.currentRouterPath === "room9" && props.enemyIsDefeated === false){
+    return (
+      <div>
+        <div>
+          <button disabled={props.attackDisabled} className="attackButton" onClick={props.damageEnemy}>Attack</button>
+        </div>
+        <div>
+          <button disabled={props.attackDisabled} onClick={props.usePotion}>Use Potion: {props.potions}</button>
+        </div>
+      </div>
+    );
   } else if (props.currentRouterPath === "room9") {
     return (
       <div onClick={props.updateRoute}>
@@ -102,7 +118,7 @@ function Controls(props) {
       </div>
     );
   } else {
-    return(
+    return (
       <div>
         <p>this did not work</p>
       </div>
