@@ -15,14 +15,18 @@ function Room5(props){
   }
   return (
     <div>
-      <div className="container5">
+      <div className="container">
         <p>You enter what appears to be a weapons stock room. A struggle took place here and most of the equipment is damaged or unusable. A pedestal in the center of the room, which looks like it could've held something, glows a blue gem on each side. Whoever was fighting here fell back and whoever won took the spoils. You notice a door behind some fallen debris.</p>
         <div>
           {currentContent}
         </div>
       </div>
       <style jsx>{`
-        .container5 {
+        .container {
+          font-size: 24px;
+          padding: 20px;
+          margin: 0;
+          margin-top: 50px;
           color: white;
           height: 400px;
         }

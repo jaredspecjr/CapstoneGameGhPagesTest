@@ -12,10 +12,14 @@ function Room7(props){
           <p>Suddenly, a gate slams shut behind you. In front of you stand three huge doors. Atop each door you notice there's a different colored gem.</p>
         </div>
         <style jsx>{`
-            .container {
-              color: white;
-              height: 400px;
-            }
+          .container {
+            font-size: 24px;
+            padding: 20px;
+            margin: 0;
+            margin-top: 50px;
+            color: white;
+            height: 400px;
+          }
             `}</style>
         </div>
       );

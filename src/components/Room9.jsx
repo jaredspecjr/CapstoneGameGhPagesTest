@@ -11,10 +11,14 @@ function Room9(props){
           <p>The gate slams shut behind you. You can see four torches lit, illuminating a big golden door. On the left is a gash in the wall, It's to big to fit through and too dark to see what's on the other side.</p>
         </div>
         <style jsx>{`
-            .container {
-              color: white;
-              height: 400px;
-            }
+          .container {
+            font-size: 24px;
+            padding: 30px;
+            margin: 0;
+            margin-top: 50px;
+            color: white;
+            height: 400px;
+          }
             `}</style>
         </div>
       );

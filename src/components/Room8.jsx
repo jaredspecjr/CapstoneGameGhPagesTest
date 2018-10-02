@@ -10,6 +10,10 @@ function Room8(){
       </div>
       <style jsx>{`
         .container {
+          font-size: 24px;
+          padding: 80px;
+          margin: 0;
+          margin-top: 50px;
           color: white;
           height: 400px;
         }
