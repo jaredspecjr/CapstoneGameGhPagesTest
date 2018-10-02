@@ -18,7 +18,8 @@ function Room4(props) {
     }
     return (
       <div className="container">
-        <p>room 4</p>
+        <p>After defeating your ambusher, You see a desk near a window and a door on the far end of the room.
+        The desk seems cluttered with papers and random tools you've never seen before.</p>
         <div>
           {currentContent}
         </div>

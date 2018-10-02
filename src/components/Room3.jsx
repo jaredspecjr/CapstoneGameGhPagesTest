@@ -1,14 +1,16 @@
 import React from 'react';
-import room2 from '../assets/images/room2.jpg';
+
 
 
 function Room3() {
   return (
     <div>
-      <img src={room2}/>
+      <div className="container">
+        <p>You enter an empty hallway and hear some conflict up ahead.</p>
+      </div>
         <style jsx>{`
-          img {
-            width: 100%;
+          .container {
+            color: white;
             height: 400px;
           }
       `}</style>

@@ -8,7 +8,7 @@ function Room9(props){
     return (
       <div>
         <div className="container">
-          <h5>Room 9</h5>
+          <p>The gate slams shut behind you. You can see four torches lit, illuminating a big golden door. On the left is a gash in the wall, It's to big to fit through and too dark to see what's on the other side.</p>
         </div>
         <style jsx>{`
             .container {

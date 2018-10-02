@@ -9,7 +9,7 @@ function Room7(props){
     return (
       <div>
         <div className="container">
-          <h5>Room 7</h5>
+          <p>Suddenly, a gate slams shut behind you. In front of you stand three huge doors. Atop each door you notice there's a different colored gem.</p>
         </div>
         <style jsx>{`
             .container {

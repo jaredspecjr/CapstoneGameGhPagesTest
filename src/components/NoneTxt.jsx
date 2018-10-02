@@ -6,7 +6,7 @@ function NoneTxt(props){
   return (
     <div>
       <div className="container">
-        <p>You search the pile but, nothing seems to be here...</p>
+        <p>You search but, nothing of use seems to be there...</p>
         <button onClick={props.noItemsFound}>Next</button>
       </div>
       <style jsx>{`

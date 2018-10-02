@@ -31,7 +31,7 @@ class App extends Component {
       enemyAttacked: false,
       playerAttacked: false,
       potionUsed: false,
-      potions: 1,
+      potions: 0,
       potion1: true,
       potion2: true,
       roomSearched: false
@@ -53,6 +53,7 @@ class App extends Component {
     this.pickUpPotion = this.pickUpPotion.bind(this);
     this.searchClicked = this.searchClicked.bind(this);
     this.noItemsFound = this.noItemsFound.bind(this);
+    this.resetPotion = this.resetPotion.bind(this);
   }
   componentWillMount() {
     this.updateRoute();
@@ -72,6 +73,7 @@ class App extends Component {
 
   updateRoute() {
     this.enemyReset();
+    this.resetPotion();
     const routeExtension = location.hash;
     const cleanedExtension = this.cleanExtension(routeExtension);
     console.log(cleanedExtension);
@@ -263,8 +265,11 @@ class App extends Component {
     });
   }
   // checks to see if potion is in room or not
-  checkPotion(){
-
+  resetPotion(){
+    let newPotion1 = true;
+    this.setState({
+      potion1: newPotion1
+    });
   }
   searchClicked(){
     let newRoomSeached = true;
@@ -289,7 +294,11 @@ class App extends Component {
         <div className="stage">
           <Switch>
             <Route exact path="/" render={()=><Room1/>} />
-            <Route path="/room2" render={()=><Room2/>} />
+            <Route path="/room2" render={()=><Room2
+              potion1={this.state.potion1}
+              roomSearched={this.state.roomSearched}
+              pickUpPotion={this.pickUpPotion}
+              noItemsFound={this.noItemsFound}/>} />
             <Route path="/room3" render={()=><Room3/>} />
             <Route path="/room4" render={()=><Room4
               enemyHealth={this.state.enemyHealth}
@@ -307,7 +316,11 @@ class App extends Component {
               roomSearched={this.state.roomSearched}
               pickUpPotion={this.pickUpPotion}
               noItemsFound={this.noItemsFound}/>}/>
-            <Route path="/room5" render={()=><Room5/>}/>
+            <Route path="/room5" render={()=><Room5
+              potion1={this.state.potion1}
+              roomSearched={this.state.roomSearched}
+              pickUpPotion={this.pickUpPotion}
+              noItemsFound={this.noItemsFound}/>}/>
             <Route path="/room6" render={()=><Room6/>}/>
             <Route path="/room7" render={()=><Room7
               enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}

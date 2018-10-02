@@ -19,14 +19,19 @@ function Controls(props) {
     );
   } else if (props.currentRouterPath === "room2") {
     return(
-      <div onClick={props.updateRoute}>
-        <Link to="room10">go to boss room from 2</Link>
+      <div>
+        <div>
+          <button onClick={props.searchClicked}>Search Book Shelf</button>
+        </div>
+        <div onClick={props.updateRoute}>
+          <Link to="room10">Go through door.</Link>
+        </div>
       </div>
     );
   } else if (props.currentRouterPath === "room3") {
     return (
       <div onClick={props.updateRoute}>
-        <Link to="room5">go to room 5 </Link>
+        <Link to="room5">Proceed</Link>
       </div>
     );
   } else if (props.currentRouterPath === "room4" && props.enemyIsDefeated === false ) {
@@ -47,20 +52,25 @@ function Controls(props) {
           <button onClick={props.searchClicked}>Search Desk</button>
         </div>
         <div onClick={props.updateRoute}>
-          <Link to="room6">go to room 6</Link>
+          <Link to="room6">Go through the door</Link>
         </div>
       </div>
     );
   } else if (props.currentRouterPath === "room5") {
     return (
-      <div onClick={props.updateRoute}>
-        <Link to="room7">go to room 7</Link>
+      <div>
+        <div>
+          <button onClick={props.searchClicked}>Search room</button>
+        </div>
+        <div onClick={props.updateRoute}>
+          <Link to="room7">Clear rubble and enter</Link>
+        </div>
       </div>
     );
   } else if (props.currentRouterPath === "room6") {
     return (
       <div onClick={props.updateRoute}>
-        <Link to="room7">go to room 7</Link>
+        <Link to="room7">Proceed with Caution</Link>
       </div>
     );
   } else if (props.currentRouterPath === "room7" && props.enemyIsDefeated === false ) {
@@ -78,20 +88,20 @@ function Controls(props) {
     return (
       <div>
         <div onClick={props.updateRoute}>
-          <Link to="room2">go to room 2 has potion</Link>
+          <Link to="room2">Pick the Green door</Link>
         </div>
         <div onClick={props.updateRoute}>
-          <Link to="room8">go to room 8 should have nothing</Link>
+          <Link to="room9">Pick the Red door</Link>
         </div>
         <div onClick={props.updateRoute}>
-          <Link to="room9">go to room 9 should be enemy</Link>
+          <Link to="room8">Pick the Blue door</Link>
         </div>
       </div>
     );
   } else if (props.currentRouterPath === "room8") {
     return (
       <div onClick={props.updateRoute}>
-        <Link to="room10">go to boss room from 8</Link>
+        <Link to="room10">Continue through door</Link>
       </div>
     );
   } else if (props.currentRouterPath === "room9" && props.enemyIsDefeated === false){
@@ -108,7 +118,7 @@ function Controls(props) {
   } else if (props.currentRouterPath === "room9") {
     return (
       <div onClick={props.updateRoute}>
-        <Link to="room10">go to boss room from 9</Link>
+        <Link to="room10">Enter through the Golden doors</Link>
       </div>
     );
   } else if (props.currentRouterPath === "room10") {
