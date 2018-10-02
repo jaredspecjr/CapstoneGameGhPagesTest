@@ -26,6 +26,7 @@
     "react-dom": "^15.5.4",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.0.0",
+    "style-it": "^2.0.0",
     "styled-jsx": "^2.2.7"
   },
   "devDependencies": {

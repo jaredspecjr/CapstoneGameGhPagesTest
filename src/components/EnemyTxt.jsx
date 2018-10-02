@@ -31,7 +31,7 @@ function EnemyTxt(props){
           margin: 0;
           position: absolute;
         }
-        .button :hover {
+        .buttonStyle:hover {
           cursor: pointer;
         }
         .buttonStyle {
