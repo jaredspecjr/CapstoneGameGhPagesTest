@@ -3,6 +3,12 @@ import Room1 from './Room1';
 import Room2 from './Room2';
 import Room3 from './Room3';
 import Room4 from './Room4';
+import Room5 from './Room5';
+import Room6 from './Room6';
+import Room7 from './Room7';
+import Room8 from './Room8';
+import Room9 from './Room9';
+import Room10 from './Room10';
 import HealthBar from './HealthBar';
 import Controls from './Controls';
 import { Route, Switch } from 'react-router-dom';
@@ -257,7 +263,13 @@ class App extends Component {
             enemyHurt={this.state.enemyHurt}
             playerHurt={this.state.playerHurt}
             amountHealed={this.state.amountHealed}
-            isEnemyDefeated={this.isEnemyDefeated} />} />
+            isEnemyDefeated={this.isEnemyDefeated} />}/>
+            <Route path="/room5" render={()=><Room5/>}/>
+            <Route path="/room6" render={()=><Room6/>}/>
+            <Route path="/room7" render={()=><Room7/>}/>
+            <Route path="/room8" render={()=><Room8/>}/>
+            <Route path="/room9" render={()=><Room9/>}/>
+            <Route path="/room10" render={()=><Room10/>}/>
           </Switch>
         </div>
         <div className="controls">
