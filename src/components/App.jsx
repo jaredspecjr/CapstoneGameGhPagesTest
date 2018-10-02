@@ -54,6 +54,7 @@ class App extends Component {
     this.searchClicked = this.searchClicked.bind(this);
     this.noItemsFound = this.noItemsFound.bind(this);
     this.resetPotion = this.resetPotion.bind(this);
+    this.resetGame = this.resetGame.bind(this);
   }
   componentWillMount() {
     this.updateRoute();
@@ -162,7 +163,7 @@ class App extends Component {
   }
 
   damageEnemy() {
-    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 20) + 3);
+    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 20) + 100);
     let enemyDead = 0;
     let newAttackDisabled = true;
     if(newEnemyHealth <= 0){
@@ -283,6 +284,13 @@ class App extends Component {
       roomSearched: newRoomSeached
     });
   }
+  resetGame() {
+    if(this.state.healthLevel > 0){
+      window.location.href = "http://localhost:8080/";
+    } else {
+      console.log("something happened");
+    }
+  }
 
   render() {
     return (
@@ -358,7 +366,8 @@ class App extends Component {
             potions={this.state.potions}
             usePotion={this.usePotion}
             pickUpPotion={this.pickUpPotion}
-            searchClicked={this.searchClicked}/>
+            searchClicked={this.searchClicked}
+            resetGame={this.resetGame}/>
         </div>
         <style jsx>{`
           .App {
@@ -379,6 +388,8 @@ class App extends Component {
             border: 10px solid black;
             margin-top: 50px;
             height: 279px;
+            width: 100%;
+            align-self: center;
           }
           .healthBar {
             width: 600px;
