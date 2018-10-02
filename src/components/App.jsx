@@ -134,7 +134,7 @@ class App extends Component {
     if(this.state.enemyHealth < 1){
       this.isEnemyDefeated();
     } else {
-      let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 20) + 1);
+      let newHealthLevel = this.state.healthLevel -  Math.floor((Math.random() * 18) + 1);
       let playerDead = 0;
       if(newHealthLevel <= 0){
         this.setState({
@@ -162,7 +162,7 @@ class App extends Component {
   }
 
   damageEnemy() {
-    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 15) + 3);
+    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 20) + 3);
     let enemyDead = 0;
     let newAttackDisabled = true;
     if(newEnemyHealth <= 0){
@@ -351,9 +351,6 @@ class App extends Component {
           </Switch>
         </div>
         <div className="controls">
-          <button onClick={this.damagePlayer}>test health</button>
-          <button onClick={this.updateRoute}>test cleaned extension</button>
-          <button onClick={this.pickUpPotion}>test enemyReset</button>
           <Controls currentRouterPath={this.state.currentRoute}
             updateRoute={this.updateRoute}
             enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
@@ -367,6 +364,8 @@ class App extends Component {
           .App {
             display: flex;
             flex-direction: column;
+            background-color: black;
+            margin: -10px;
           }
           .stage {
             border: 5px solid black;

@@ -3,17 +3,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+const containerStyle = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-around",
+  fontSize: "35px",
+  marginTop: "8%",
+  flexGap: "50px"
+};
+const linkStyle = {
+  textDecoration: "none",
+  backgroundColor: "darkblue",
+  color: "white",
+  padding: "10px",
+  borderRadius: "50px"
+};
 
 function Controls(props) {
   if (props.currentRouterPath === "") {
     return(
-      <div>
+      <div style={containerStyle}>
         <div onClick={props.updateRoute}>
-          <Link to="room4">Go through the door on your left</Link>
+          <Link style={linkStyle} to="room4">Go through the door on your left</Link>
         </div>
         <div onClick={props.updateRoute}>
-          <Link to="room3">Go through the door on your right</Link>
+          <Link style={linkStyle} to="room3">Go through the door on your right</Link>
         </div>
       </div>
     );
