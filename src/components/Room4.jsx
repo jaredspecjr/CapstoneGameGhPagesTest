@@ -18,15 +18,24 @@ function Room4(props) {
     }
     return (
       <div className="container">
-        <p>After defeating your ambusher, You see a desk near a window and a door on the far end of the room.
+        <p className="description">After defeating your ambusher, You see a desk near a window and a door on the far end of the room.
         The desk seems cluttered with papers and random tools you've never seen before.</p>
         <div>
           {currentContent}
         </div>
         <style jsx>{`
             .container {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
               color: white;
               height: 400px;
+            }
+            .description {
+              margin: 0;
+              margin-top: 80px;
+              font-size: 24px;
+              padding: 50px;
             }
             `}</style>
         </div>

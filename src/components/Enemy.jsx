@@ -23,24 +23,64 @@ function Enemy(props) {
     currentContent = "lol";
   }
   return (
-    <div>
-      <div style={ENEMYSTATUS} className="enemyHealth">
-        {props.enemyHealth}
+    <div className="container">
+      <div className="panel">
+        <div className="healthBarStyle">
+          <div style={ENEMYSTATUS} className="enemyHealth">
+            {props.enemyHealth}
+          </div>
+        </div>
       </div>
-      <img src={enemy}className="container"/>
-      <div>
+      <div className="panel">
+        <img src={enemy} className="enemy"/>
+      </div>
+      <div className="panel">
         {currentContent}
       </div>
         <style jsx>{`
           .container {
-            color: white;
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(3 , 1fr);
+            grid-template-rows: repeat(3, 1fr);
           }
-          .enemyHealth{
+          .panel {
+            
+          }
+          .panel:nth-child(1) {
+            display: flex;
+            justify-content: flex-end;
+            grid-row: 1 / 2;
+            grid-column: 2 / 4;
+          }
+          .panel:nth-child(2) {
+            display: flex;
+            justify-content: center;
+            grid-row: 2 / 3;
+            grid-column: 2 / 4;
+          }
+          .panel:nth-child(3) {
+            grid-row: 3 / 4;
+            grid-column: 1 / 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          }
+          .enemy {
+            width: 135px;
+          }
+          .enemyHealth {
             background-color: red;
-            height: 40px;
-            width: 200px;
+            height: 30px;
             transition: width 1s; background-color: 1s;
             color: white;
+          }
+          .healthBarStyle {
+            border: 2px solid white;
+            margin-right: 10px;
+            height: 30px;
+            width: 300px;
+            background-color: silver;
           }
       `}</style>
     </div>

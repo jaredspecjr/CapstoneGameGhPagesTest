@@ -25,7 +25,7 @@ class App extends Component {
       enemyHurt: 0,
       amountHealed:0,
       currentRoute: "",
-      enemyHealth: 60,
+      enemyHealth: 100,
       enemyIsDefeated: false,
       attackDisabled: false,
       enemyAttacked: false,
@@ -117,7 +117,7 @@ class App extends Component {
 
   enemyReset() {
     let newEnemyIsDefeated = false;
-    let newEnemyHealth = 60;
+    let newEnemyHealth = 100;
     this.setState({
       enemyIsDefeated: newEnemyIsDefeated
     });
@@ -323,7 +323,8 @@ class App extends Component {
               noItemsFound={this.noItemsFound}/>}/>
             <Route path="/room6" render={()=><Room6/>}/>
             <Route path="/room7" render={()=><Room7
-              enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
+              enemyHealth={this.state.enemyHealth}
+              enemyIsDefeated={this.state.enemyIsDefeated}
               enemyAttacked={this.state.enemyAttacked}
               playerAttacked={this.state.playerAttacked}
               potionUsed={this.state.potionUsed}
@@ -335,7 +336,8 @@ class App extends Component {
               isEnemyDefeated={this.isEnemyDefeated}/>}/>
             <Route path="/room8" render={()=><Room8/>}/>
             <Route path="/room9" render={()=><Room9
-              enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
+              enemyHealth={this.state.enemyHealth}
+              enemyIsDefeated={this.state.enemyIsDefeated}
               enemyAttacked={this.state.enemyAttacked}
               playerAttacked={this.state.playerAttacked}
               potionUsed={this.state.potionUsed}
@@ -352,16 +354,17 @@ class App extends Component {
           <button onClick={this.damagePlayer}>test health</button>
           <button onClick={this.updateRoute}>test cleaned extension</button>
           <button onClick={this.pickUpPotion}>test enemyReset</button>
-          <Controls currentRouterPath={this.state.currentRoute} updateRoute={this.updateRoute} enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
-          attackDisabled={this.state.attackDisabled}
-          potions={this.state.potions}
-          usePotion={this.usePotion}
-          pickUpPotion={this.pickUpPotion}
-          searchClicked={this.searchClicked}/>
+          <Controls currentRouterPath={this.state.currentRoute}
+            updateRoute={this.updateRoute}
+            enemyIsDefeated={this.state.enemyIsDefeated} damageEnemy={this.damageEnemy}
+            attackDisabled={this.state.attackDisabled}
+            potions={this.state.potions}
+            usePotion={this.usePotion}
+            pickUpPotion={this.pickUpPotion}
+            searchClicked={this.searchClicked}/>
         </div>
         <style jsx>{`
           .App {
-            text-align: center;
             display: flex;
             flex-direction: column;
           }
