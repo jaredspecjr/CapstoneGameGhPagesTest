@@ -1,21 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Enemy from './Enemy';
 
 
+function Room7(props){
+  if (props.enemyIsDefeated === true){
 
-function Room7(){
-  return (
-    <div>
-      <div className="container">
-        <h5>Room 7</h5>
-      </div>
-      <style jsx>{`
-        .container {
-          color: white;
-          height: 400px;
-        }
-    `}</style>
-    </div>
-  );
-}
+    return (
+      <div>
+        <div className="container">
+          <h5>Room 7</h5>
+        </div>
+        <style jsx>{`
+            .container {
+              color: white;
+              height: 400px;
+            }
+            `}</style>
+        </div>
+      );
+    } else {
+      return <Enemy playerAttacked={props.playerAttacked}  enemyAttacked={props.enemyAttacked} enemyHealth={props.enemyHealth}
+        damagePlayer={props.damagePlayer}
+        didEnemyAttack={props.didEnemyAttack}
+        enemyHurt={props.enemyHurt}
+        playerHurt={props.playerHurt}
+        potionUsed={props.potionUsed}
+        amountHealed={props.amountHealed}
+        isEnemyDefeated={props.isEnemyDefeated}/>
+    }
+  }
 
-export default Room7;
+  export default Room7;

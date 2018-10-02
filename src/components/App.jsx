@@ -117,6 +117,7 @@ class App extends Component {
     this.setState({
       enemyHealth: newEnemyHealth
     });
+    this.didEnemyAttack();
   }
 
   damagePlayer() {
@@ -154,7 +155,7 @@ class App extends Component {
   }
 
   damageEnemy() {
-    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 30) + 5);
+    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 15) + 3);
     let enemyDead = 0;
     let newAttackDisabled = true;
     if(newEnemyHealth <= 0){
@@ -214,16 +215,8 @@ class App extends Component {
         this.setState({
           attackDisabled: newAttackDisabled
         });
-        if(this.state.healthLevel <= 75){
-          let newHealthLevel = this.state.healthLevel + 25;
-          let potionDif = newHealthLevel - this.state.healthLevel;
-          this.setState({
-            amountHealed: potionDif
-          });
-          this.setState({
-            healthLevel: newHealthLevel
-          });
-        } else {
+        let newHealthLevel = this.state.healthLevel + 25;
+        if(newHealthLevel >= 100){
           let currentHealthLevel = this.state.healthLevel;
           let revisedHealthLevel = 100;
           let potionDif = revisedHealthLevel - currentHealthLevel;
@@ -232,6 +225,14 @@ class App extends Component {
           });
           this.setState({
             healthLevel: revisedHealthLevel
+          });
+        } else {
+          this.setState({
+            healthLevel: newHealthLevel
+          });
+          let potionDif = newHealthLevel - this.state.healthLevel;
+          this.setState({
+            amountHealed: potionDif
           });
         }
       } else {
@@ -254,19 +255,31 @@ class App extends Component {
             <Route exact path="/" render={()=><Room1/>} />
             <Route path="/room2" render={()=><Room2/>} />
             <Route path="/room3" render={()=><Room3/>} />
-            <Route path="/room4" render={()=><Room4 enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
-            enemyAttacked={this.state.enemyAttacked}
-            playerAttacked={this.state.playerAttacked}
-            potionUsed={this.state.potionUsed}
-            damagePlayer={this.damagePlayer}
-            didEnemyAttack={this.didEnemyAttack}
-            enemyHurt={this.state.enemyHurt}
-            playerHurt={this.state.playerHurt}
-            amountHealed={this.state.amountHealed}
-            isEnemyDefeated={this.isEnemyDefeated} />}/>
+            <Route path="/room4" render={()=><Room4
+              enemyHealth={this.state.enemyHealth}
+              enemyIsDefeated={this.state.enemyIsDefeated}
+              enemyAttacked={this.state.enemyAttacked}
+              playerAttacked={this.state.playerAttacked}
+              potionUsed={this.state.potionUsed}
+              damagePlayer={this.damagePlayer}
+              didEnemyAttack={this.didEnemyAttack}
+              enemyHurt={this.state.enemyHurt}
+              playerHurt={this.state.playerHurt}
+              amountHealed={this.state.amountHealed}
+              isEnemyDefeated={this.isEnemyDefeated}/>}/>
             <Route path="/room5" render={()=><Room5/>}/>
             <Route path="/room6" render={()=><Room6/>}/>
-            <Route path="/room7" render={()=><Room7/>}/>
+            <Route path="/room7" render={()=><Room7
+              enemyHealth={this.state.enemyHealth} enemyIsDefeated={this.state.enemyIsDefeated}
+              enemyAttacked={this.state.enemyAttacked}
+              playerAttacked={this.state.playerAttacked}
+              potionUsed={this.state.potionUsed}
+              damagePlayer={this.damagePlayer}
+              didEnemyAttack={this.didEnemyAttack}
+              enemyHurt={this.state.enemyHurt}
+              playerHurt={this.state.playerHurt}
+              amountHealed={this.state.amountHealed}
+              isEnemyDefeated={this.isEnemyDefeated}/>}/>
             <Route path="/room8" render={()=><Room8/>}/>
             <Route path="/room9" render={()=><Room9/>}/>
             <Route path="/room10" render={()=><Room10/>}/>

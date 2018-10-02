@@ -19,15 +19,15 @@ function Room4(props) {
       );
     } else {
       return <Enemy playerAttacked={props.playerAttacked}  enemyAttacked={props.enemyAttacked} enemyHealth={props.enemyHealth}
-      damagePlayer={props.damagePlayer}
-      didEnemyAttack={props.didEnemyAttack}
-      enemyHurt={props.enemyHurt}
-      playerHurt={props.playerHurt}
-      potionUsed={props.potionUsed}
-      amountHealed={props.amountHealed}
-      isEnemyDefeated={props.isEnemyDefeated}/>
+        damagePlayer={props.damagePlayer}
+        didEnemyAttack={props.didEnemyAttack}
+        enemyHurt={props.enemyHurt}
+        playerHurt={props.playerHurt}
+        potionUsed={props.potionUsed}
+        amountHealed={props.amountHealed}
+        isEnemyDefeated={props.isEnemyDefeated}/>
     }
   }
 
 
-export default Room4;
+  export default Room4;
