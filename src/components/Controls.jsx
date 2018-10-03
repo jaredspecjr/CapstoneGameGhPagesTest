@@ -7,24 +7,23 @@ const containerStyle = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-around",
+  marginRight: "250px",
+  marginLeft: "250px"
 };
 const linkStyle = {
   textDecoration: "none",
   backgroundColor: "darkblue",
   color: "white",
-  fontSize: "35px",
+  fontSize: "24px",
   borderRadius: "50px",
   padding: "15px",
   margin: "43px",
   borderStyle: "none",
-  overflow: "visible"
 };
 const disabled = {
   textDecoration: "none",
   color: "white",
-  paddingLeft: "10px",
-  paddingRight: "10px",
-  border: "1px solid yellow"
+  padding: "10px",
 };
 const attackControls = {
   display: "flex",
@@ -43,20 +42,21 @@ const centerControls = {
 }
 
 
+
 function Controls(props) {
   if (props.currentRouterPath === "") {
     return(
       <div style={containerStyle}>
         <div>
           <button style={linkStyle}>
-            <div  onClick={props.updateRoute}>
+            <div onClick={props.updateRoute}>
               <Link style={disabled} to="room4">Go through the door on your left</Link>
             </div>
           </button>
         </div>
         <div>
           <button style={linkStyle}>
-            <div  onClick={props.updateRoute}>
+            <div onClick={props.updateRoute}>
               <Link style={disabled} to="room3">Go through the door on your right</Link>
             </div>
           </button>

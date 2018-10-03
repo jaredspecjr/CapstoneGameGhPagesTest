@@ -387,7 +387,7 @@ class App extends Component {
           .controls {
             border: 10px solid black;
             margin-top: 50px;
-            height: 279px;
+            height: 280px;
             width: 100%;
             align-self: center;
           }
