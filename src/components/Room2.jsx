@@ -26,9 +26,9 @@ function Room2(props) {
         <style jsx>{`
           .container {
             font-size: 24px;
-            padding: 50px;
+            padding: 30px;
             margin: 0;
-            margin-top: 50px;
+            margin-top: 70px;
             color: white;
             height: 400px;
           }

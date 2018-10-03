@@ -7,7 +7,7 @@ function NoneTxt(props){
     <div>
       <div className="container">
         <div>
-          <p>You search but, nothing of use seems to be there...</p>
+          <p className="description">You search, but nothing seems to be there...</p>
         </div>
         <div className="button">
           <button className="buttonStyle" onClick={props.noItemsFound}>Next</button>
@@ -36,12 +36,15 @@ function NoneTxt(props){
         }
         .buttonStyle {
           font-size: 15px;
-          margin-right: 10px;
-          margin-bottom: 7px;
+          margin-right: 6px;
+          margin-bottom: 4px;
           border-radius: 50px;
           background-color: #58ad27;
           padding-right: 10px;
           padding-left: 9px;
+        }
+        .description{
+          padding: 2px;
         }
     `}</style>
     </div>

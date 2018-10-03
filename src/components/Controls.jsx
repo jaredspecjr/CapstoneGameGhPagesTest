@@ -23,7 +23,8 @@ const disabled = {
   textDecoration: "none",
   color: "white",
   paddingLeft: "10px",
-  paddingRight: "10px"
+  paddingRight: "10px",
+  border: "1px solid yellow"
 };
 const attackControls = {
   display: "flex",

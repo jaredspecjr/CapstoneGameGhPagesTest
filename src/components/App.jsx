@@ -163,7 +163,7 @@ class App extends Component {
   }
 
   damageEnemy() {
-    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 20) + 100);
+    let newEnemyHealth = this.state.enemyHealth -  Math.floor((Math.random() * 30) + 8);
     let enemyDead = 0;
     let newAttackDisabled = true;
     if(newEnemyHealth <= 0){
@@ -378,7 +378,7 @@ class App extends Component {
           }
           .stage {
             border: 5px solid black;
-            margin-top: 30px;
+            margin-top: 60px;
             background-color: black;
             width: 600px;
             height: 400px;
@@ -393,6 +393,7 @@ class App extends Component {
           }
           .healthBar {
             width: 600px;
+            margin-top: 15px;
             height: 50px;
             background-color: silver;
             border: 5px solid black;

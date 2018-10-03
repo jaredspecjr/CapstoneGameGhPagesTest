@@ -16,7 +16,7 @@ function Room7(props){
             font-size: 24px;
             padding: 20px;
             margin: 0;
-            margin-top: 50px;
+            margin-top: 75px;
             color: white;
             height: 400px;
           }

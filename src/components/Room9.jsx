@@ -15,7 +15,7 @@ function Room9(props){
             font-size: 24px;
             padding: 30px;
             margin: 0;
-            margin-top: 50px;
+            margin-top: 85px;
             color: white;
             height: 400px;
           }
