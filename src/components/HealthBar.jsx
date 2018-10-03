@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 function HealthBar(props){
   const STATUS = {
     width: `${props.healthLevel}%`
   };
-  console.log(props.healthLevel);
+  
   return (
     <div style={STATUS} className="health">
       <div>
@@ -25,5 +25,8 @@ function HealthBar(props){
     </div>
   );
 }
+HealthBar.propTypes = {
+  healthLevel: PropTypes.number.isRequired
+};
 
 export default HealthBar;

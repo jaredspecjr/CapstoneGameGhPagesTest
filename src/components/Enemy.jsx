@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import enemy from '../assets/images/swordsman_t.png';
-import EnemyTxt from './EnemyTxt';
-import PlayerTxt from './PlayerTxt';
-import PotionTxt from './PotionTxt';
+import React from "react";
+import PropTypes from "prop-types";
+import enemy from "../assets/images/swordsman_t.png";
+import EnemyTxt from "./EnemyTxt";
+import PlayerTxt from "./PlayerTxt";
+import PotionTxt from "./PotionTxt";
 
 function Enemy(props) {
   const ENEMYSTATUS = {
@@ -11,15 +11,14 @@ function Enemy(props) {
   };
   let currentContent = null;
   if(props.enemyAttacked === true){
-    currentContent = <EnemyTxt playerHurt={props.playerHurt} didEnemyAttack={props.didEnemyAttack}/>
+    currentContent = <EnemyTxt playerHurt={props.playerHurt} didEnemyAttack={props.didEnemyAttack}/>;
   } else if(props.playerAttacked === true){
     currentContent = <PlayerTxt enemyHurt={props.enemyHurt} damagePlayer={props.damagePlayer}
-    isEnemyDefeated={props.isEnemyDefeated}/>
+      isEnemyDefeated={props.isEnemyDefeated}/>;
   } else if(props.potionUsed === true){
     currentContent = <PotionTxt amountHealed={props.amountHealed}
-    damagePlayer={props.damagePlayer}/>
+      damagePlayer={props.damagePlayer}/>;
   } else {
-    console.log(props.playerAttacked);
     currentContent = "lol";
   }
   return (
@@ -37,7 +36,7 @@ function Enemy(props) {
       <div className="panel">
         {currentContent}
       </div>
-        <style jsx>{`
+      <style jsx>{`
           .container {
             height: 400px;
             display: grid;
@@ -45,7 +44,7 @@ function Enemy(props) {
             grid-template-rows: repeat(3, 1fr);
           }
           .panel {
-            
+
           }
           .panel:nth-child(1) {
             display: flex;
@@ -87,5 +86,17 @@ function Enemy(props) {
   );
 }
 
+Enemy.propTypes = {
+  enemyHealth: PropTypes.number.isRequired,
+  enemyAttacked: PropTypes.bool.isRequired,
+  playerHurt: PropTypes.number.isRequired,
+  didEnemyAttack: PropTypes.func.isRequired,
+  playerAttacked: PropTypes.bool.isRequired,
+  enemyHurt: PropTypes.number.isRequired,
+  isEnemyDefeated: PropTypes.func.isRequired,
+  damagePlayer: PropTypes.func.isRequired,
+  potionUsed: PropTypes.bool.isRequired,
+  amountHealed: PropTypes.number.isRequired,
+};
 
 export default Enemy;

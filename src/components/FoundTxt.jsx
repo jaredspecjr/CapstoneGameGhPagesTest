@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
 
 
@@ -47,5 +48,8 @@ function FoundTxt(props){
     </div>
   );
 }
+FoundTxt.propTypes = {
+  pickUpPotion: PropTypes.func.isRequired
+};
 
 export default FoundTxt;

@@ -1,19 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FoundTxt from './FoundTxt';
-import NoneTxt from './NoneTxt';
-
-
+import React from "react";
+import PropTypes from "prop-types";
+import FoundTxt from "./FoundTxt";
+import NoneTxt from "./NoneTxt";
 
 function Room2(props) {
   let currentContent = null;
   if(props.roomSearched === true && props.potion1 === true){
-    currentContent = <FoundTxt pickUpPotion={props.pickUpPotion}/>
+    currentContent = <FoundTxt pickUpPotion={props.pickUpPotion}/>;
   } else if( props.roomSearched === true && props.potion1 === false){
-    currentContent = <NoneTxt noItemsFound={props.noItemsFound}/>
+    currentContent = <NoneTxt noItemsFound={props.noItemsFound}/>;
   } else {
     currentContent = null;
   }
+
   return (
     <div>
       <div className="container">
@@ -23,19 +22,25 @@ function Room2(props) {
           {currentContent}
         </div>
       </div>
-        <style jsx>{`
-          .container {
-            font-size: 24px;
-            padding: 30px;
-            margin: 0;
-            margin-top: 70px;
-            color: white;
-            height: 400px;
-          }
-      `}</style>
+      <style jsx>{`
+        .container {
+          font-size: 24px;
+          padding: 30px;
+          margin: 0;
+          margin-top: 70px;
+          color: white;
+          height: 400px;
+        }
+    `}</style>
     </div>
   );
 }
 
+Room2.propTypes = {
+  roomSearched: PropTypes.bool.isRequired,
+  potion1: PropTypes.bool.isRequired,
+  pickUpPotion: PropTypes.func.isRequired,
+  noItemsFound: PropTypes.func.isRequired
+};
 
 export default Room2;

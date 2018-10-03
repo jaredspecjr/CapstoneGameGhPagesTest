@@ -1,18 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FoundTxt from './FoundTxt';
-import NoneTxt from './NoneTxt';
+import React from "react";
+import PropTypes from "prop-types";
+import FoundTxt from "./FoundTxt";
+import NoneTxt from "./NoneTxt";
 
 
 function Room5(props){
   let currentContent = null;
   if(props.roomSearched === true && props.potion1 === true){
-    currentContent = <FoundTxt pickUpPotion={props.pickUpPotion}/>
+    currentContent = <FoundTxt pickUpPotion={props.pickUpPotion}/>;
   } else if( props.roomSearched === true && props.potion1 === false){
-    currentContent = <NoneTxt noItemsFound={props.noItemsFound}/>
+    currentContent = <NoneTxt noItemsFound={props.noItemsFound}/>;
   } else {
     currentContent = null;
   }
+
   return (
     <div>
       <div className="container">
@@ -34,5 +35,12 @@ function Room5(props){
     </div>
   );
 }
+
+Room5.propTypes = {
+  roomSearched: PropTypes.bool.isRequired,
+  potion1: PropTypes.bool.isRequired,
+  pickUpPotion: PropTypes.func.isRequired,
+  noItemsFound: PropTypes.func.isRequired,
+};
 
 export default Room5;

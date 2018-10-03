@@ -1,6 +1,4 @@
-import React from 'react';
-import room1 from '../assets/images/room1.jpg';
-
+import React from "react";
 
 function Room1(){
   return (

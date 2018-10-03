@@ -1,6 +1,5 @@
-import React from 'react';
-
-
+import React from "react";
+import PropTypes from "prop-types";
 
 function EnemyTxt(props){
   return (
@@ -47,5 +46,10 @@ function EnemyTxt(props){
     </div>
   );
 }
+
+EnemyTxt.propTypes = {
+  playerHurt: PropTypes.number.isRequired,
+  didEnemyAttack: PropTypes.func.isRequired
+};
 
 export default EnemyTxt;

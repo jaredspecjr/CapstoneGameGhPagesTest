@@ -1,8 +1,7 @@
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 const containerStyle = {
   display: "flex",
   flexDirection: "row",
@@ -31,7 +30,7 @@ const attackControls = {
   justifyContent: "space-between",
   width: "600px",
   alignSelf: "center"
-}
+};
 const attackBtnStyle = {
   fontSize: "24px",
   borderStyle: "none",
@@ -39,7 +38,7 @@ const attackBtnStyle = {
 const centerControls = {
   display: "flex",
   justifyContent: "center",
-}
+};
 
 
 
@@ -258,11 +257,11 @@ function Controls(props) {
       <div className="thankYou">
         <p>Thank you for playing the game! no boss has been implemented at the moment. Sorry!</p>
         <button onClick={props.resetGame}>Reset Game</button>
-          <style jsx>{`
-            .thankYou {
-              color: white;
-            }
-        `}</style>
+        <style jsx>{`
+          .thankYou {
+            color: white;
+          }
+      `}</style>
       </div>
     );
   } else {
@@ -274,4 +273,16 @@ function Controls(props) {
   }
 }
 
-export default Controls
+Controls.propTypes = {
+  currentRouterPath: PropTypes.string.isRequired,
+  updateRoute: PropTypes.func.isRequired,
+  searchClicked: PropTypes.func.isRequired,
+  enemyIsDefeated: PropTypes.bool.isRequired,
+  attackDisabled: PropTypes.bool.isRequired,
+  usePotion: PropTypes.func.isRequired,
+  potions: PropTypes.number.isRequired,
+  damageEnemy: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired
+};
+
+export default Controls;

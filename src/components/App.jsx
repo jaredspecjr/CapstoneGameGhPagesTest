@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import Room1 from './Room1';
-import Room2 from './Room2';
-import Room3 from './Room3';
-import Room4 from './Room4';
-import Room5 from './Room5';
-import Room6 from './Room6';
-import Room7 from './Room7';
-import Room8 from './Room8';
-import Room9 from './Room9';
-import Room10 from './Room10';
-import HealthBar from './HealthBar';
-import Controls from './Controls';
-import { Route, Switch } from 'react-router-dom';
-// import { browserHistory } from 'react-router';
+import React, { Component } from "react";
+import Room1 from "./Room1";
+import Room2 from "./Room2";
+import Room3 from "./Room3";
+import Room4 from "./Room4";
+import Room5 from "./Room5";
+import Room6 from "./Room6";
+import Room7 from "./Room7";
+import Room8 from "./Room8";
+import Room9 from "./Room9";
+import Room10 from "./Room10";
+import HealthBar from "./HealthBar";
+import Controls from "./Controls";
+import { Route, Switch } from "react-router-dom";
+// import { browserHistory } from "react-router";
 
 //Your initialization
 
@@ -77,7 +77,6 @@ class App extends Component {
     this.resetPotion();
     const routeExtension = location.hash;
     const cleanedExtension = this.cleanExtension(routeExtension);
-    console.log(cleanedExtension);
     this.setState({
       currentRoute: cleanedExtension
     });
@@ -95,9 +94,8 @@ class App extends Component {
   isEnemyDefeated() {
     if(this.state.enemyHealth < 1){
       this.enemyDefeated();
-      console.log("dis enemy DED");
     } else {
-      console.log("this enemy is still alive!");
+      return null;
     }
   }
 
@@ -105,7 +103,7 @@ class App extends Component {
     if(this.state.healthLevel <= 0){
       window.location.href = "http://localhost:8080/";
     } else {
-      console.log("player is alive");
+      return null;
     }
   }
 
@@ -244,10 +242,10 @@ class App extends Component {
           });
         }
       } else {
-        console.log("you have max health...");
+        alert("you have max health");
       }
     } else {
-      console.log("you have no potions!");
+      alert("you have no potions!");
     }
   }
 
@@ -288,7 +286,7 @@ class App extends Component {
     if(this.state.healthLevel > 0){
       window.location.href = "http://localhost:8080/";
     } else {
-      console.log("something happened");
+      return null;
     }
   }
 

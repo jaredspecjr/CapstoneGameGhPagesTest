@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React from "react";
+import PropTypes from "prop-types";
 
 
 function NoneTxt(props){
@@ -50,5 +50,8 @@ function NoneTxt(props){
     </div>
   );
 }
+NoneTxt.propTypes = {
+  noItemsFound: PropTypes.func.isRequired,
+};
 
 export default NoneTxt;

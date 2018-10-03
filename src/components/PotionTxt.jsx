@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React from "react";
+import PropTypes from "prop-types";
 
 
 function PotionTxt(props){
@@ -47,5 +47,9 @@ function PotionTxt(props){
     </div>
   );
 }
+PotionTxt.propTypes = {
+  damagePlayer: PropTypes.func.isRequired,
+  amountHealed: PropTypes.func.isRequired
+};
 
 export default PotionTxt;

@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React from "react";
+import PropTypes from "prop-types";
 
 
 function PlayerTxt(props){
@@ -47,5 +47,10 @@ function PlayerTxt(props){
     </div>
   );
 }
+
+PlayerTxt.propTypes = {
+  enemyHurt: PropTypes.number.isRequired,
+  damagePlayer: PropTypes.func.isRequired
+};
 
 export default PlayerTxt;
